@@ -1,0 +1,70 @@
+@mixin btn-reset {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.header {
+  height: 55px;
+  background: #0C1427;
+  margin-bottom: 30px;
+}
+
+.headerToggler {
+  @include btn-reset;
+  display: block;
+  width: 22px;
+  height: 17px;
+  span {
+    font-size: 0;
+    display: block;
+    width: 22px;
+    height: 17px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 15px;
+    transition: .5s;
+    &::after,&::before {
+      position: absolute;
+      top:10px;
+      left: 0;
+      content: '';
+      display: block;
+      border-radius: 1.1px;
+      background: #fff;
+      width: 20px;
+      height: 3px;
+      transition: .5s;
+    }
+    &::after {
+      top: 0;
+      box-shadow: 0 5px 0 #fff;
+    }
+  }
+
+  &_active {
+    span {
+      &::after,&::before {
+        width: 20px;
+        height: 3px;
+        transform: rotate(45deg) ;
+        transition: .5s;
+        top: 5px;
+
+      }
+      &::after {
+        transform: rotate(-45deg) ;
+        box-shadow: none;
+      }
+      &::before {
+      }
+    }
+  }
+}
